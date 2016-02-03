@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('twentyfortyeightApp', ['Game'])
-  .controller('GameController', function(GameManager) {
-  	this.game = GameManager;
-  });
+.module('twentyfortyeightApp', ['Game'])
+.controller('GameController', function(GameManager) {
+	this.game = GameManager;
+});
