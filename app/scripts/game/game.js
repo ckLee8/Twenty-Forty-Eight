@@ -3,5 +3,8 @@ angular.module('Game', [])
 	this.newGame = function() {};
 	this.move = function() {};
 	this.updateScore = function(newScore) {};
-	this.movesAvailable = function() {};
+	this.movesAvailable = function() {
+		return BoardService.anyCellsAvailable() ||
+			BoardService.tileMatchesAvailable();
+	};
 })
