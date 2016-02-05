@@ -7,7 +7,18 @@ angular.module('Board', [])
 	};
 	return Tile;
 })
-.service('BoardService', function() {
+.service('BoardService', function(TileModel) {
+	this.buildEmptyGameBoard = function() {
+      var self = this;
+      // Initialize our grid
+      for (var x = 0; x < service.size * service.size; x++) {
+        this.grid[x] = null;
+      }
+
+      this.forEach(function(x,y) {
+        self.setCellAt({x:x,y:y}, null);
+      });
+    };
 	this.board = [];
 	this.tiles = [];
 	this.tiles.push(new TileModel({x: 1, y: 1}, 2));
