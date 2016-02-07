@@ -40,12 +40,12 @@ $colors:  #EEE4DA, // 2
   width: $width;
   height: $width; // The gameboard is a square
  
-  .grid-container {
-    position: absolute;   // the grid is absolutely positioned
+  .board-container {
+    position: absolute;   // the board is absolutely positioned
     z-index: 1;           // IMPORTANT to set the z-index for layering
     margin: 0 auto;       // center
  
-    .grid-cell {
+    .board-cell {
       width: $tile-size;              // set the cell width
       height: $tile-size;             // set the cell height
       margin-bottom: $tile-padding;   // the padding between lower cells
