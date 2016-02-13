@@ -35,7 +35,7 @@ angular.module('Board', [])
 	
 // Set a cell at position
 	this.setCellAt = function(pos, tile) {
-	if (this.withinGrid(pos)) {
+	if (this.withinBoard(pos)) {
 		var xPos = this._coordinatesToPosition(pos);
 		this.tiles[xPos] = tile;
 		}
@@ -43,7 +43,7 @@ angular.module('Board', [])
 
 // Fetch a cell at a given position
 	this.getCellAt = function(pos) {
-		if (this.withinGrid(pos)) {
+		if (this.withinBoard(pos)) {
 			var x = this._coordinatesToPosition(pos);
 			return this.tiles[x];
 		} else {
@@ -52,9 +52,45 @@ angular.module('Board', [])
 	};
 
 // A small helper function to determine if a position is
-// within the boundaries of our grid
-	this.withinGrid = function(cell) {
+// within the boundaries of our Board
+	this.withinBoard = function(cell) {
 		return cell.x >= 0 && cell.x < this.size &&
 		cell.y >= 0 && cell.y < this.size;
 	};
+<<<<<<< Updated upstream
+=======
+	this._positionToCoordinates = function(i) {
+		var x = i % service.size,
+	    y = (i - x) / service.size;
+	    return {
+		    x: x,
+		    y: y
+	    };
+	};
+ 
+// Helper to convert coordinates to position
+	this._coordinatesToPosition = function(pos) {
+		return (pos.y * service.size) + pos.x;
+	};
+  	
+  	this.startingTileNumber = 2;
+  	this.buildStartingPosition = function() {
+    	for (var x = 0; x < this.startingTileNumber; x++) {
+      		this.randomlyInsertNewTile();
+      	}
+    }
+    this.availableCells = function() {
+    var cells = [],
+        self = this;
+ 
+    this.forEach(function(x,y) {
+      var foundTile = self.getCellAt({x:x, y:y});
+      if (!foundTile) {
+        cells.push({x:x,y:y});
+      }
+    });
+ 
+    return cells;
+  };
+>>>>>>> Stashed changes
 });
