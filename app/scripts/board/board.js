@@ -57,8 +57,6 @@ angular.module('Board', [])
 		return cell.x >= 0 && cell.x < this.size &&
 		cell.y >= 0 && cell.y < this.size;
 	};
-<<<<<<< Updated upstream
-=======
 	this._positionToCoordinates = function(i) {
 		var x = i % service.size,
 	    y = (i - x) / service.size;
@@ -92,5 +90,27 @@ angular.module('Board', [])
  
     return cells;
   };
->>>>>>> Stashed changes
+  this.randomAvailableCell = function() {
+    var cells = this.availableCells();
+    if (cells.length > 0) {
+      return cells[Math.floor(Math.random() * cells.length)];
+    }
+  };
+  this.randomlyInsertNewTile = function() {
+    var cell = this.randomAvailableCell(),
+        tile = new TileModel(cell, 2);
+    this.insertTile(tile);
+  };
+ 
+  // Add a tile to the tiles array
+  this.insertTile = function(tile) {
+    var pos = this._coordinatesToPosition(tile);
+    this.tiles[pos] = tile;
+  };
+ 
+  // Remove a tile from the tiles array
+  this.removeTile = function(pos) {
+    var pos = this._coordinatesToPosition(tile);
+    delete this.tiles[pos];
+  }
 });
