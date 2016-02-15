@@ -23,4 +23,22 @@ angular.module('Controls', [])
 			}
 		});
 	};
+	this.on = function(cb) {
+  		this.keyEventHandlers.push(cb);
+	};
+
+	this._handleKeyEvent = function(key, evt) {
+		var callbacks = this.keyEventHandlers;
+	    if (!callbacks) {
+	    	return;
+	    }	
+ 
+	    evt.preventDefault();
+	    if (callbacks) {
+	    	for (var x = 0; x < callbacks.length; x++) {
+	      		var cb = callbacks[x];
+	      		cb(key, evt);
+	    	}
+	  	}
+	};
 });
